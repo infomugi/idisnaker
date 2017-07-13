@@ -64,7 +64,7 @@ class WniRecommendationController extends Controller
 		$totient = RSA::model()->generateTotient($p,$q);
 		$publicKeys = RSA::model()->generatePublicKeys($totient);
 		$privateKeys = RSA::model()->generatePrivateKeys($totient,$publicKeys);
-		$ciphertext = RSA::model()->encrypt($data->no_registration,$publicKeys,$modulo);
+		$ciphertext = RSA::model()->encrypt($data->recommendation_code,$publicKeys,$modulo);
 
 		$data->modulo = $modulo;
 		$data->publickey = $publicKeys;
@@ -223,7 +223,7 @@ class WniRecommendationController extends Controller
 			$model->last_view = date('Y-m-d h:i:s');
 
 			if($model->save()){
-				$this->redirect(array('print','id'=>$model->id_wni_recommendation));
+				$this->redirect(array('view','id'=>$model->id_wni_recommendation));
 			}
 		}
 

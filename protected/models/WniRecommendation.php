@@ -83,23 +83,23 @@ class WniRecommendation extends CActiveRecord
 			'id_wni_recommendation' => 'Id Wni Recommendation',
 			'created_date' => 'Created Date',
 			'user_id' => 'User',
-			'registration_code' => 'Registration Code',
-			'registration_date' => 'Registration Date',
-			'recommendation_code' => 'Recommendation Code',
-			'recommendation_date' => 'Recommendation Date',
-			'government_code' => 'Government Code',
-			'government_date' => 'Government Date',
-			'institution_code' => 'Institution Code',
-			'institution_date' => 'Institution Date',
-			'job_seeker_code' => 'Job Seeker Code',
-			'company_code' => 'Company Code',
-			'name' => 'Name',
-			'place' => 'Place',
-			'birth' => 'Birth',
-			'gender' => 'Gender',
-			'address' => 'Address',
-			'country_id' => 'Country',
-			'program_type' => 'Program Type',
+			'registration_code' => 'Nomor Registrasi',
+			'registration_date' => 'Tanggal Registrasi',
+			'recommendation_code' => 'Nomor Rekomendasi',
+			'recommendation_date' => 'Tanggal Rekomendasi',
+			'government_code' => 'Nomor Surat BPN2TKI',
+			'government_date' => 'Tanggal Surat BPN2TKI',
+			'institution_code' => 'Nomor Surat Lembaga',
+			'institution_date' => 'Tanggal Surat Lembaga',
+			'job_seeker_code' => 'Nomor Kartu Kuning',
+			'company_code' => 'Nomor Surat HRD Korea',
+			'name' => 'Nama Lengkap',
+			'place' => 'Tempat Lahir',
+			'birth' => 'Tanggal Lahir',
+			'gender' => 'Jenis Kelamin',
+			'address' => 'Alamat',
+			'country_id' => 'Negara Tujuan',
+			'program_type' => 'Jenis Program',
 			'status' => 'Status',
 			'publickey' => 'Publickey',
 			'privatekey' => 'Privatekey',
@@ -174,6 +174,7 @@ class WniRecommendation extends CActiveRecord
 
 	protected function beforeSave()
 	{
+		$this->birth = date('Y-m-d', strtotime($this->birth));
 		$this->created_date = date('Y-m-d', strtotime($this->created_date));
 		$this->registration_date = date('Y-m-d', strtotime($this->registration_date));
 		$this->recommendation_date = date('Y-m-d', strtotime($this->recommendation_date));
@@ -184,6 +185,7 @@ class WniRecommendation extends CActiveRecord
 	
 	protected function afterFind()
 	{
+		$this->birth = date('d-m-Y', strtotime($this->birth));
 		$this->created_date = date('d-m-Y', strtotime($this->created_date));
 		$this->registration_date = date('d-m-Y', strtotime($this->registration_date));
 		$this->recommendation_date = date('d-m-Y', strtotime($this->recommendation_date));

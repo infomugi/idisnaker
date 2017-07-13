@@ -107,7 +107,7 @@ $this->pageTitle='Detail WNI Recommendation';
 
 
 
-																										<H3><i class="fa fa-check-square"></i> Rekomendasi Paspor <span class="hidden-xs">Serial : <?php echo $model->no_registration; ?></span></H3>
+																										<H3><i class="fa fa-check-square"></i> Rekomendasi Paspor <span class="hidden-xs">Serial : <?php echo $model->recommendation_code; ?></span></H3>
 
 																										<div class="col-md-8">
 
