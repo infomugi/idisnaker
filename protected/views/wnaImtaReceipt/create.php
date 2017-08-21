@@ -3,11 +3,11 @@
 /* @var $model WnaImtaReceipt */
 
 $this->breadcrumbs=array(
-	'Wna Imta Receipts'=>array('index'),
+	'Kelola Tanda Terima IMTA'=>array('admin'),
 	'Add',
 	);
 
-	$this->pageTitle='Add WnaImtaReceipt';
-	?>
+$this->pageTitle='Buat Tanda Terima IMTA';
+?>
 
-	<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

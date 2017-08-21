@@ -28,7 +28,7 @@ class WnaImtaReceiptController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('create','update','view','delete','admin','index','changeimage','enable','disable','print'),
+				'actions'=>array('create','update','view','delete','admin','index','changeimage','enable','disable','print','printreceipt','printverified'),
 				'users'=>array('@'),
 				'expression'=>'Yii::app()->user->record->level==1',
 				),
@@ -205,5 +205,21 @@ class WnaImtaReceiptController extends Controller
 		$this->render('print',array(
 			'model'=>$this->loadModel($id),
 			));
-	}			
+	}	
+
+	public function actionPrintReceipt($id)
+	{
+		$this->layout = "print";
+		$this->render('print_receipt',array(
+			'model'=>$this->loadModel($id),
+			));
+	}
+
+	public function actionPrintVerified($id)
+	{
+		$this->layout = "print";
+		$this->render('print_verified',array(
+			'model'=>$this->loadModel($id),
+			));
+	}					
 }

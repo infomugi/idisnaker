@@ -3,8 +3,8 @@
 /* @var $model WnaImtaReceipt */
 
 $this->breadcrumbs=array(
-	'Wna Imta Receipts'=>array('index'),
-	'Manage',
+	'Tanda Terima IMTA'=>array('admin'),
+	'Kelola',
 	);
 
 $this->pageTitle='Manage Tanda Terima IMTA';
@@ -25,11 +25,11 @@ $this->pageTitle='Manage Tanda Terima IMTA';
 
 		<span class="hidden-xs">
 
-			<?php echo CHtml::link('Add Tanda Terima IMTA',
+			<?php echo CHtml::link('Buat Tanda Terima',
 				array('create'),
 				array('class' => 'btn btn-primary btn-flat'));
 				?>
-				<?php echo CHtml::link('List Tanda Terima IMTA',
+				<?php echo CHtml::link('Daftar Tanda Terima IMTA',
 					array('index'),
 					array('class' => 'btn btn-primary btn-flat'));
 					?>
@@ -58,8 +58,41 @@ $this->pageTitle='Manage Tanda Terima IMTA';
 							'name',
 							'date_expired',
 
+
 							array(
-								'header'=>'Cetak',
+								'header'=>'Tanda Terima',
+								'class'=>'CButtonColumn',
+								'template'=>'{print}',
+								'buttons'=>array(
+
+									'print'=>
+									array(
+										'label'=>'Print',
+										'url'=>'Yii::app()->createUrl("WnaImtaReceipt/printreceipt", array("id"=>$data->id_wna_imta_receipt))',
+										'imageUrl'=>Yii::app()->request->baseUrl.'/image/icon/print.png',
+										),
+
+									),
+								),
+
+							array(
+								'header'=>'Hasil Verifikasi',
+								'class'=>'CButtonColumn',
+								'template'=>'{print}',
+								'buttons'=>array(
+
+									'print'=>
+									array(
+										'label'=>'Print',
+										'url'=>'Yii::app()->createUrl("WnaImtaReceipt/printverified", array("id"=>$data->id_wna_imta_receipt))',
+										'imageUrl'=>Yii::app()->request->baseUrl.'/image/icon/print.png',
+										),
+
+									),
+								),							
+
+							array(
+								'header'=>'Ceklis IMTA',
 								'class'=>'CButtonColumn',
 								'template'=>'{print}',
 								'buttons'=>array(

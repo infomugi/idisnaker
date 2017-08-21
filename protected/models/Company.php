@@ -59,12 +59,12 @@ class Company extends CActiveRecord
 			array('name, address, district_id, klui, category_id, classification, type', 'required'),
 			array('district_id, klui, category_id, type, status, employee_local, employee_strange, place, business_license_from, use_plan_tka', 'numerical', 'integerOnly'=>true),
 
-			array('company_code, phone, classification, technical_code, business_license_date, use_plan_tka_date', 'length', 'max'=>15),
+			array('company_code, classification, technical_code, business_license_date, use_plan_tka_date', 'length', 'max'=>15),
 			array('name, description', 'length', 'max'=>100),
 			array('letterno, spsb, lksbipartit, kopkar, faximile', 'length', 'max'=>25),
 			array('email, owner, business_license_no, use_plan_tka_no', 'length', 'max'=>50),
 
-			array('email', 'length', 'max'=>50),
+			array('email, phone', 'length', 'max'=>50),
 			array('name', 'length', 'max'=>100),
 			array('company_code','unique'),
 			array('email','email'),

@@ -64,6 +64,7 @@
 
 														<li><a href="<?php echo Yii::app()->baseUrl; ?>/wnaimta/create">Add</a></li>
 														<li><a href="<?php echo Yii::app()->baseUrl; ?>/wnaimta/admin">Manage <span class="pull-right"> <div class="label label-primary"><b><?php echo Yii::app()->db->createCommand("SELECT COUNT(id_wna_imta) FROM wna_imta")->queryScalar();?></b></div> </span></a></li>
+														<li><a href="<?php echo Yii::app()->baseUrl; ?>/wnaimtareceipt/admin">Tanda Terima <span class="pull-right"> <div class="label label-primary"><b><?php echo Yii::app()->db->createCommand("SELECT COUNT(id_wna_imta_receipt) FROM wna_imta_receipt")->queryScalar();?></b></div> </span></a></li>
 
 													</ul>
 												</li>
