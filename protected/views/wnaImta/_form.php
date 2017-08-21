@@ -907,7 +907,7 @@
 											        $("#WnaImta_birth").mask("99/99/9999",{placeholder:"dd/mm/yyyy"});
 											        $("#WnaImta_expired_date").mask("99/99/9999",{placeholder:"dd/mm/yyyy"});
 											        // $("#WnaImta_no_registration").mask("560/999/<?php echo WnaImta::model()->romawi(substr(date('m'),1)); ?>/PTK/<?php echo date('Y'); ?>");
-											        $("#WnaImta_no_registration").mask("560/999/V/PTK/<?php echo date('Y'); ?>");
+											        $("#WnaImta_no_registration").mask("560/999/VI/PTK/<?php echo date('Y'); ?>");
 														   // $("#WnaImta_no_rptka").mask("KEP 999/99999/RPTKA-BPM/2019");
 														   // $("#WnaImta_no_imta").mask("KEP 99999/IMTA/BPMP/2019");
 														   // $("#WnaImta_no_passport").mask("*********");

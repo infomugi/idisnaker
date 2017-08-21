@@ -1,6 +1,6 @@
 <?php
 
-class CompanyController extends Controller
+class WnaImtaReceiptController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -28,7 +28,7 @@ class CompanyController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('create','update','view','delete','admin','index','enable','disable','report','reportCompany','excel'),
+				'actions'=>array('create','update','view','delete','admin','index','changeimage','enable','disable','print'),
 				'users'=>array('@'),
 				'expression'=>'Yii::app()->user->record->level==1',
 				),
@@ -70,17 +70,20 @@ class CompanyController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Company;
+		$model=new WnaImtaReceipt;
+		$model->setScenario('create');
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Company']))
+		if(isset($_POST['WnaImtaReceipt']))
 		{
-			$model->attributes=$_POST['Company'];
-			if($model->save()){
-				$this->redirect(array('view','id'=>$model->id_company));
-			}
+			$model->attributes=$_POST['WnaImtaReceipt'];
+			$model->user_id = YII::app()->user->id;
+			$model->created_date = date('Y-m-d h:i:s');
+			$model->status = 0;
+			if($model->save())
+				$this->redirect(array('print','id'=>$model->id_wna_imta_receipt));
 		}
 
 		$this->render('create',array(
@@ -100,11 +103,11 @@ class CompanyController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Company']))
+		if(isset($_POST['WnaImtaReceipt']))
 		{
-			$model->attributes=$_POST['Company'];
+			$model->attributes=$_POST['WnaImtaReceipt'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_company));
+				$this->redirect(array('print','id'=>$model->id_wna_imta_receipt));
 		}
 
 		$this->render('update',array(
@@ -131,67 +134,37 @@ class CompanyController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Company');
+		$dataProvider=new CActiveDataProvider('WnaImtaReceipt');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 			));
 	}
-
-
-	public function actionReport()
-	{
-		$dataProvider=new CActiveDataProvider('Company');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-			));
-	}	
-
-
-	public function actionExcel()
-	{
-		$dataProvider=new CActiveDataProvider('Company');
-		$this->render('excel',array(
-			'dataProvider'=>$dataProvider,
-			));
-	}		
 
 	/**
 	 * Manages all models.
 	 */
 	public function actionAdmin()
 	{
-		$model=new Company('search');
+		$model=new WnaImtaReceipt('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Company']))
-			$model->attributes=$_GET['Company'];
+		if(isset($_GET['WnaImtaReceipt']))
+			$model->attributes=$_GET['WnaImtaReceipt'];
 
 		$this->render('admin',array(
 			'model'=>$model,
 			));
 	}
 
-	public function actionReportCompany()
-	{
-		$model=new Company('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Company']))
-			$model->attributes=$_GET['Company'];
-
-		$this->render('reportCompany',array(
-			'model'=>$model,
-			));
-	}	
-
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Company the loaded model
+	 * @return WnaImtaReceipt the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Company::model()->findByPk($id);
+		$model=WnaImtaReceipt::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -199,11 +172,11 @@ class CompanyController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Company $model the model to be validated
+	 * @param WnaImtaReceipt $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='company-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='wna-imta-receipt-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
@@ -224,5 +197,13 @@ class CompanyController extends Controller
 		$model->status = 0;
 		$model->save();
 		$this->redirect(array('index'));
+	}	
+
+	public function actionPrint($id)
+	{
+		$this->layout = "print";
+		$this->render('print',array(
+			'model'=>$this->loadModel($id),
+			));
 	}			
 }

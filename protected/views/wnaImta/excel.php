@@ -35,11 +35,11 @@ $this->widget('ext.yii-toastr.MugiToastr', array(
 		'stream' => FALSE,
 		'fileName' => 'List WNA Imta.xls',
 		'columns'=>array(
-			array('header'=>'No. Pendaftaran BPMP & Tanggal ','value'=>''),
+			array('header'=>'No. Pendaftaran BPMP & Tanggal ','value'=>'$data->bpmp_no . " - ". $data->bpmp_date'),
 
 			array('header'=>'No. BAP','value'=>'$data->no_registration . " - ". $data->date_examination'),
 
-			array('header'=>'No. Pendaftaran DISNAKER & Tanggal ','value'=>''),
+			array('header'=>'No. Pendaftaran DISNAKER & Tanggal ','value'=>'$data->disnaker_no . " - ". $data->disnaker_date'),
 
 			array('header'=>'Nama dan Alamat Perusahaan','value'=>'$data->Company->name . " - ". $data->Company->address'),
 
@@ -58,6 +58,7 @@ $this->widget('ext.yii-toastr.MugiToastr', array(
 			array('name'=>'employment_agreement','value'=>'WnaImta::model()->agreement($data->employment_agreement)'),
 			'no_imta',
 			array('name'=>'imta_extension_to','value'=>'WnaImta::model()->imta($data->imta_extension_to)'),
+			array('header'=>'Tanggal Berlaku ','value'=>'$data->bpmp_expire_date'),
 
 			),
 			)); ?>
