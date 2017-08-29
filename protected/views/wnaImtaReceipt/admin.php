@@ -51,7 +51,9 @@ $this->pageTitle='Manage Tanda Terima IMTA';
 								'htmlOptions'=>array('width'=>'10px', 
 									'style' => 'text-align: center;')),
 
-							
+							'no_bap',
+							'contact_name',
+							'contact_mobile',
 
 							
 							array('name'=>'company_id','value'=>'$data->Company->name'),

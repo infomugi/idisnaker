@@ -57,6 +57,7 @@ class WnaExistence extends CActiveRecord
 			array('name, department', 'length', 'max'=>150),
 			array('address', 'length', 'max'=>255),
 			array('place', 'length', 'max'=>100),
+			array('no_registration','unique'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_wna_existence, created_date, user_id, no_registration, no_report, date_report, name, place, birth, gender, citizenship_id, department, company_id, no_passport, no_rptka, no_imta, no_kitaskitap, expired_date, status', 'safe', 'on'=>'search'),

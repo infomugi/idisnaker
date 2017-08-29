@@ -121,7 +121,7 @@ $this->pageTitle='Manage WNA Existence';
 		<!-- Modal -->
 		<div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
-				<div class="modal-content modal-md">
+				<div class="modal-content modal-lg">
 					<!-- Popup Header -->
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

@@ -156,7 +156,7 @@
 				),
 
 			'db'=>array(
-				'connectionString' => 'mysql:host=localhost;dbname=db_skripsi_disnaker',
+				'connectionString' => 'mysql:host=localhost;dbname=i_disnaker',
 				'emulatePrepare' => true,
 				'username' => 'root',
 				'password' => '',

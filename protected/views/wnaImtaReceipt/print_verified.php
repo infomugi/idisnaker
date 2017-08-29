@@ -27,7 +27,7 @@ $expire = date_create($model->date_expired);
 $tanggal_buat = date_format($created_date,'d').' '.(ucfirst($bulan[date_format($created_date,'m')])).' '.date_format($created_date,'Y'); 
 $bulan_ini = (ucfirst($bulan[date_format($created_date,'m')])).' '.date_format($created_date,'Y'); 
 $tanggal_expire = date_format($expire,'d').' '.(ucfirst($bulan[date_format($expire,'m')])).' '.date_format($expire,'Y'); 
-$this->pageTitle="IMTA - ". $model->Company->name . " an. ". $model->name;	
+$this->pageTitle="IMTA - ". $model->Company->name . " an ". $model->name;	
 ?>
 
 <style type="text/css">

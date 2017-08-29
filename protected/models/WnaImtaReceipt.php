@@ -65,6 +65,8 @@ class WnaImtaReceipt extends CActiveRecord
 			array('user_id, company_id, letter_request, letter_stuffing_imta, letter_imta, letter_rpkta, letter_passport, letter_kitas, letter_tka_existence, letter_permission, letter_akta, letter_npwp, letter_employment, letter_appointment_tki, letter_realization_of_training, letter_organizational_structure, letter_permit_domicile, letter_insurance_tka, letter_foto, letter_bpjs, status, email, supervision_id, general_id, bpmp_id', 'numerical', 'integerOnly'=>true),
 			array('name, description', 'length', 'max'=>255),
 			array('no_bap, no_recomended, date_recomended, date_expired', 'length', 'max'=>50),
+			array('signature_name, contact_name, contact_mobile, contact_email', 'length', 'max'=>50),
+			array('no_bap','unique'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_wna_imta_receipt, created_date, user_id, name, company_id, no_bap, no_recomended, date_recomended, date_expired, letter_request, letter_stuffing_imta, letter_imta, letter_rpkta, letter_passport, letter_kitas, letter_tka_existence, letter_permission, letter_akta, letter_npwp, letter_employment, letter_appointment_tki, letter_realization_of_training, letter_organizational_structure, letter_permit_domicile, letter_insurance_tka, letter_foto, letter_bpjs, description, status, email, email_date, supervision_id, supervision_date, general_id, general_date, bpmp_id, bpmp_date', 'safe', 'on'=>'search'),
@@ -126,6 +128,10 @@ class WnaImtaReceipt extends CActiveRecord
 			'general_date' => 'General Date',
 			'bpmp_id' => 'Bpmp',
 			'bpmp_date' => 'Bpmp Date',
+			'signature_name' => 'Tanda Tangan BAP',
+			'contact_name' => 'Nama Kontak Person',
+			'contact_mobile' => 'Kontak Mobile',
+			'contact_email' => 'Email',
 			);
 	}
 

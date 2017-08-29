@@ -26,7 +26,7 @@ $created_date = date_create($model->created_date);
 $expire = date_create($model->date_expired);
 $tanggal_buat = date_format($created_date,'d').' '.(ucfirst($bulan[date_format($created_date,'m')])).' '.date_format($created_date,'Y'); 
 $tanggal_expire = date_format($expire,'d').' '.(ucfirst($bulan[date_format($expire,'m')])).' '.date_format($expire,'Y'); 
-$this->pageTitle="IMTA - ". $model->Company->name . " an. ". $model->name;	
+$this->pageTitle="IMTA - ". $model->Company->name . " an ". $model->name;	
 ?>
 
 <style type="text/css">
@@ -88,10 +88,24 @@ $this->pageTitle="IMTA - ". $model->Company->name . " an. ". $model->name;
 
 			<?php 
 			$this->widget('application.extensions.qrcode.QRCodeGenerator',array(
-				'data' => YII::app()->baseUrl.'/wnaimtareceipt/print/id/'.$model->id_wna_imta_receipt,
-				'filename' => "wna-receipt-".$model->id_wna_imta_receipt.".png",
+				// 'data' => YII::app()->baseUrl.'/wnaimtareceipt/print/id/'.$model->id_wna_imta_receipt,
+				'data' => "SMSTO:+".$model->contact_mobile.":".$model->contact_name." untuk ".$model->Company->name." diharapkan Perwakilan Perusahaan menghadap Bpk. H. Muslih di DISNAKER Perihal Verifikasi BPJS",
+				'filename' => "wna-receipt-".$model->id_wna_imta_receipt."-call.png",
 				'subfolderVar' => false,
 				'matrixPointSize' => 5,
+				'displayImage'=>true, // default to true, if set to false display a URL path
+				'errorCorrectionLevel'=>'L', // available parameter is L,M,Q,H
+				'matrixPointSize'=>2, // 1 to 10 only
+				)) 
+				?>
+
+				<?php 
+				$this->widget('application.extensions.qrcode.QRCodeGenerator',array(
+				// 'data' => YII::app()->baseUrl.'/wnaimtareceipt/print/id/'.$model->id_wna_imta_receipt,
+					'data' => "SMSTO:+".$model->contact_mobile.":".$model->contact_name." Status Berkas IMTA (No. BAP ".$model->no_bap.") ".$model->Company->name."an. ".$model->name.":",
+					'filename' => "wna-receipt-".$model->id_wna_imta_receipt."-status.png",
+					'subfolderVar' => false,
+					'matrixPointSize' => 5,
 				'displayImage'=>true, // default to true, if set to false display a URL path
 				'errorCorrectionLevel'=>'L', // available parameter is L,M,Q,H
 				'matrixPointSize'=>3, // 1 to 10 only

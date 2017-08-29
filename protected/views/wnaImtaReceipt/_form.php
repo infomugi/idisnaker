@@ -21,6 +21,65 @@
 
 			<?php echo $form->errorSummary($model, null, null, array('class' => 'alert alert-warning')); ?>
 
+
+			<div class="form-group">
+
+				<div class="col-sm-4 control-label">
+					<?php echo $form->labelEx($model,'signature_name'); ?>
+				</div>   
+
+				<div class="col-sm-8">
+					<?php echo $form->error($model,'signature_name'); ?>
+					<?php echo $form->textField($model,'signature_name',array('class'=>'form-control')); ?>
+				</div>
+
+			</div>  
+
+
+			
+			<div class="form-group">
+
+				<div class="col-sm-4 control-label">
+					<?php echo $form->labelEx($model,'contact_name'); ?>
+				</div>   
+
+				<div class="col-sm-8">
+					<?php echo $form->error($model,'contact_name'); ?>
+					<?php echo $form->textField($model,'contact_name',array('class'=>'form-control')); ?>
+				</div>
+
+			</div>  
+
+
+			
+			<div class="form-group">
+
+				<div class="col-sm-4 control-label">
+					<?php echo $form->labelEx($model,'contact_mobile'); ?>
+				</div>   
+
+				<div class="col-sm-8">
+					<?php echo $form->error($model,'contact_mobile'); ?>
+					<?php echo $form->textField($model,'contact_mobile',array('class'=>'form-control')); ?>
+				</div>
+
+			</div>  
+
+
+			
+			<div class="form-group">
+
+				<div class="col-sm-4 control-label">
+					<?php echo $form->labelEx($model,'contact_email'); ?>
+				</div>   
+
+				<div class="col-sm-8">
+					<?php echo $form->error($model,'contact_email'); ?>
+					<?php echo $form->textField($model,'contact_email',array('class'=>'form-control')); ?>
+				</div>
+
+			</div>  
+
 			<div class="form-group">
 
 				<div class="col-sm-4 control-label">
